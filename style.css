@@ -133,142 +133,7 @@ h2 span {
    OPENING SCREEN
 ===================================== */
 
-/* .opening {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100vh;
-    height: 100svh;
-    z-index: 1000;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    background: #e8dac6;
-    transition: opacity 1.4s ease, visibility 1.4s ease;
-} */
 
-/* .opening.opened {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-} */
-
-/* OPENING PHOTO */
-/* .cover-photo {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image: url("https://i.ibb.co/HDvv5Kcr/Whats-App-Image-2026-11-08-at-9-57-17-PM.webp");
-    background-size: cover;
-    background-position: center 40%;
-    background-repeat: no-repeat;
-    transform: scale(1.04);
-    animation: photoZoom 18s ease-in-out infinite alternate;
-} */
-
-/* PHOTO OVERLAY */
-/* .cover-shade {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background:
-        linear-gradient(
-            90deg,
-            rgba(53, 30, 23, 0.30),
-            rgba(255, 246, 228, 0.18),
-            rgba(53, 30, 23, 0.30)
-        ),
-        linear-gradient(
-            to bottom,
-            rgba(40, 20, 15, 0.18),
-            rgba(40, 20, 15, 0.38)
-        );
-} */
-
-/* GOLD FRAME */
-/* .cover-frame {
-    position: absolute;
-    inset: 22px;
-    border: 1px solid rgba(255, 230, 180, 0.85);
-    outline: 1px solid rgba(255, 255, 255, 0.45);
-    outline-offset: 7px;
-    z-index: 2;
-    pointer-events: none;
-} */
-
-/* COVER TEXT */
-/* .cover-content {
-    position: relative;
-    z-index: 5;
-    text-align: center;
-    padding: 30px 20px;
-    color: #fff9ed;
-    text-shadow: 0 2px 15px rgba(40, 15, 10, 0.65);
-} */
-
-/* .cover-content h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(55px, 9vw, 105px);
-    font-weight: 400;
-    margin: 20px 0;
-    color: #fff4df;
-}
-
-.cover-content h1 span {
-    color: #e8c58d;
-}
-
-.cover-content .arabic {
-    font-size: 27px;
-    color: #fff0d0;
-    margin-bottom: 30px;
-}
-
-.cover-kicker,
-.cover-date {
-    letter-spacing: 5px;
-    color: #fff0d0;
-} */
-
-/* TAP TO OPEN SEAL */
-/* .open-button {
-    width: 145px;
-    height: 145px;
-    border-radius: 50%;
-    border: 1px solid #f5dfb6;
-    background: radial-gradient(circle, #fff8e9ee, #c3a16cdd);
-    color: #765737;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    margin: 38px auto 0;
-    box-shadow: 0 0 0 8px #fff4df55, 0 0 40px #f2d49caa;
-    animation: sealPulse 2.4s ease-in-out infinite;
-    text-shadow: none;
-    cursor: pointer;
-    transition: background .3s, box-shadow .3s;
-} */
-
-/* .open-button:hover {
-    box-shadow: 0 0 0 13px #fff4df55, 0 0 55px #f2d49c;
-}
-
-.open-button span:nth-child(2) {
-    font-size: .7rem;
-    letter-spacing: .12em;
-    font-weight: 700;
-}
-
-.open-button small {
-    font-size: .46rem;
-    letter-spacing: .08em;
-}
-
-.seal-icon {
-    font-size: 1.5rem;
-} */
 
 @keyframes sealPulse {
     50% {
@@ -290,44 +155,7 @@ h2 span {
    CURTAINS
 ===================================== */
 
-/* .curtain {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 51%;
-    z-index: 4;
-    background: repeating-linear-gradient(
-        90deg,
-        #79434d 0,
-        #9b646b 9%,
-        #713a46 18%,
-        #a46c72 27%,
-        #753d49 36%
-    );
-    box-shadow:
-        inset -20px 0 35px #3c172344,
-        inset 20px 0 30px #f5d7c344;
-    transition: transform 2s cubic-bezier(.72, 0, .18, 1);
-} */
 
-/* .curtain-left {
-    left: 0;
-    border-right: 3px solid #c9ad7a;
-}
-
-.curtain-right {
-    right: 0;
-    transform: scaleX(-1);
-    border-left: 3px solid #c9ad7a;
-}
-
-.opening.opened .curtain-left {
-    transform: translateX(-105%);
-}
-
-.opening.opened .curtain-right {
-    transform: translateX(105%) scaleX(-1);
-} */
 
 /* INVITATION */
 .invitation {
@@ -397,7 +225,7 @@ h2 span {
     width: 100%;
     height: 340px;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .person-info {
@@ -956,12 +784,46 @@ footer p:nth-child(2) {
 
 .envelope-stage.is-open .env-card {
     opacity: 1;
-    animation: cardSlideOut 1.6s cubic-bezier(.45, .05, .25, 1) .9s forwards;
+    animation: cardSlideOut 2.8s cubic-bezier(.45, .05, .25, 1) .9s forwards;
 }
 
 @keyframes cardSlideOut {
-    from { transform: translateY(28%); }
-    to   { transform: translateY(-10%); }
+    0% {
+        transform: translateY(28%);
+        opacity: 1;
+    }
+    /* thora sa nikal kar roke ga - jitna abhi nikalta hai */
+    35% {
+        transform: translateY(-10%);
+        opacity: 1;
+    }
+    /* yahan thora sa rukega */
+    50% {
+        transform: translateY(-10%);
+        opacity: 1;
+    }
+    /* ab pora nikalna shuru */
+    75% {
+        transform: translateY(-85%);
+        opacity: 1;
+    }
+    /* nikalte nikalte gayab */
+    100% {
+        transform: translateY(-160%);
+        opacity: 0;
+    }
+}
+
+/* Envelope bhi sath me halka gayab ho jaye ta ke second screen saaf aaye */
+.envelope-stage.is-open .env-box {
+    animation: envFadeOut 2.8s ease 2.2s forwards;
+}
+
+@keyframes envFadeOut {
+    to {
+        opacity: 0;
+        transform: scale(1.05);
+    }
 }
 
 /* ---- TAP BUTTON (on the golden seal) ---- */
@@ -1013,7 +875,3 @@ footer p:nth-child(2) {
     opacity: 0;
     pointer-events: none;
 }
-
-
-
-

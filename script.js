@@ -46,32 +46,73 @@
 // }
 
 
+// const openButton = document.getElementById("openButton");
+// const envelopeStage = document.getElementById("envelopeStage");
+// const opening = document.getElementById("opening");
+
+// if (openButton && envelopeStage && opening) {
+
+//     openButton.addEventListener("click", () => {
+
+//         // Closed invitation changes into open invitation
+//         envelopeStage.classList.add("is-open");
+
+//         // Wait for envelope open + card slide-out animation
+//         setTimeout(() => {
+
+//             // Reveal the main wedding website
+//             opening.classList.add("opened");
+
+//             // Start main page
+//             document.body.style.overflow = "auto";
+
+//         }, 4000);
+
+//     });
+
+// }
+
+
+/* 1. OPENING SCREEN */
+
 const openButton = document.getElementById("openButton");
 const envelopeStage = document.getElementById("envelopeStage");
 const opening = document.getElementById("opening");
 
+let invitationOpened = false;
+
 if (openButton && envelopeStage && opening) {
 
-    openButton.addEventListener("click", () => {
+    openButton.addEventListener("click", function () {
 
-        // Closed invitation changes into open invitation
+        if (invitationOpened) return;
+
+        invitationOpened = true;
+
+        // Closed envelope changes into open envelope
         envelopeStage.classList.add("is-open");
 
-        // Wait for envelope open + card slide-out animation
-        setTimeout(() => {
+        // Wait for opening animation
+        setTimeout(function () {
 
-            // Reveal the main wedding website
+            // Hide opening screen
             opening.classList.add("opened");
 
-            // Start main page
+            // Enable website scrolling
             document.body.style.overflow = "auto";
 
-        }, 4000);
+            // Start butterflies and sparkles
+            startButterflies();
+
+            // Start automatic scrolling after 7 seconds
+            autoScrollEnabled = true;
+            startAutoScroll();
+
+        }, 2500);
 
     });
 
 }
-
 
 
 // 2. COUNTDOWN
@@ -114,10 +155,10 @@ setInterval(updateCountdown, 1000);
 
 // 3. GALLERY
 const galleryImages = [
-    "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=85",
-    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1400&q=85",
+    "https://i.ibb.co/8Qvhw83/Whats-App-Image-2026-11-09-at-2-57-51-PM.webp",
+    "https://i.ibb.co/9HCBwbKG/Whats-App-Image-2026-11-09-at-3-05-56-PM.webp",
     "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=85",
-    "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=1400&q=85",
+    "https://i.ibb.co/LDL8VYVP/Whats-App-Image-2026-11-09-at-3-07-02-PM.webp",
     "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1400&q=85"
 ];
 
@@ -245,12 +286,15 @@ function startButterflies() {
 }
 
 
-// 5. AUTOMATIC SCROLL AFTER 7 SECONDS
+
+/* =========================================
+   5. AUTOMATIC SCROLL AFTER 7 SECONDS
+========================================= */
+
 let autoScrollTimer;
 let autoScrollEnabled = true;
 
 function getSections() {
-
     return Array.from(
         document.querySelectorAll("main#mainContent section.page")
     );
@@ -262,44 +306,60 @@ function startAutoScroll() {
 
     if (!autoScrollEnabled) return;
 
+    // Wait 7 seconds before next scroll
     autoScrollTimer = setTimeout(function () {
+
+        if (!autoScrollEnabled) return;
 
         const sections = getSections();
 
-        const currentPosition = window.scrollY;
-
+        // Find next section below current screen
         const nextSection = sections.find(function (section) {
-            return section.getBoundingClientRect().top > 80;
+            return section.getBoundingClientRect().top > 100;
         });
 
         if (nextSection) {
+
             nextSection.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
 
+            // Wait another 7 seconds for next section
             startAutoScroll();
+
         }
 
     }, 7000);
 }
 
 
-// 6. STOP AUTO SCROLL IF USER SCROLLS
+/* =========================================
+   6. STOP AUTO SCROLL ON USER SCROLL
+========================================= */
+
 function stopAutoScroll() {
 
+    if (!autoScrollEnabled) return;
+
     autoScrollEnabled = false;
+
     clearTimeout(autoScrollTimer);
+
+    console.log("Automatic scrolling stopped by user.");
 }
 
+// Mouse wheel
 window.addEventListener("wheel", stopAutoScroll, {
     passive: true
 });
 
-window.addEventListener("touchstart", stopAutoScroll, {
+// Mobile: actual finger movement, not simple tap
+window.addEventListener("touchmove", stopAutoScroll, {
     passive: true
 });
 
+// Keyboard scrolling
 window.addEventListener("keydown", function (event) {
 
     const keys = [
@@ -313,11 +373,9 @@ window.addEventListener("keydown", function (event) {
     if (keys.includes(event.key)) {
         stopAutoScroll();
     }
+
 });
 
-
-// 7. RSVP WHATSAPP
-const rsvpForm = document.getElementById("rsvpForm");
 
 // Add host WhatsApp number here.
 // Example: 923001234567
