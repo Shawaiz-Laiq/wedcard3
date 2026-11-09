@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f2e8">
+  <title>Adil & Fatima | Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Opening cover: your supplied photograph is used here -->
+  
+<div class="opening" id="opening">
+
+    <div class="envelope-stage" id="envelopeStage">
+
+      <div class="env-box">
+
+        <!-- 1. BACK: open envelope (flap up, cream lining) -->
+        <img src="flap.png" alt="" class="env-layer env-flap" aria-hidden="true">
+
+        <!-- 2. CARD: slides out of the envelope -->
+        <div class="env-layer env-card-wrap">
+          <img src="card.png" alt="Wedding invitation card" class="env-card">
+        </div>
+
+        <!-- 3. FRONT: envelope with flap removed (stays in front of the card) -->
+        <img src="Untitled_Design__9_-removebg-preview.png"  alt="" class="env-layer env-front new" aria-hidden="true">
+
+        <!-- 4. CLOSED envelope (shown first) -->
+        <img src="closed.png" alt="Closed wedding invitation envelope" class="env-layer env-closed" id="closedImage">
+
+        <!-- TAP TO OPEN: sits exactly on the golden seal -->
+        <button class="envelope-tap" id="openButton" type="button" aria-label="Tap to open wedding invitation">
+          <span class="tap-label">TAP TO OPEN</span>
+        </button>
+
+      </div>
+
+    </div>
+
+</div>
+
+
+
+
+  <div class="butterfly butterfly-one">🦋</div>
+  <div class="butterfly butterfly-two">🦋</div>
+  <div class="butterfly butterfly-three">🦋</div>
+  <div class="butterfly butterfly-four">🦋</div>
+  <div id="sparkles" aria-hidden="true"></div>
+
+  <main id="mainContent">
+    <section class="page invitation" id="invitation">
+      <div class="ornament">✧ ❀ ✧</div>
+      <p class="eyebrow">With gratitude to Allah</p>
+      <h2>A beautiful <span>beginning</span></h2>
+      <p class="dua">“And He placed between you affection and mercy.”</p>
+      <p class="quran">— Qur’an 30:21</p>
+      <div class="divider"></div>
+      <p class="body-copy">With the blessings of Allah and the love of our families,</p>
+      <p class="family-name">Adil and Family</p>
+      <p class="body-copy">cordially invite you to celebrate the wedding of</p>
+      <div class="ornament">❧</div>
+      <p class="eyebrow">Your presence will make our day complete</p>
+    </section>
+
+    <section class="page couple" id="couple">
+      <p class="eyebrow">Two hearts · One promise</p>
+      <h2>The <span>Couple</span></h2>
+      <div class="couple-grid">
+        <article class="person-card groom">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85"
+            alt="Wedding celebration">
+          <div class="person-info">
+            <p class="eyebrow">The Groom</p>
+            <h3>Adil</h3>
+            <p>Beginning a forever</p>
+          </div>
+        </article>
+        <article class="person-card bride">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=85"
+            alt="Wedding celebration">
+          <div class="person-info">
+            <p class="eyebrow">The Bride</p>
+            <h3>Fatima</h3>
+            <p>With love, into forever</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="page countdown" id="countdown">
+      <p class="eyebrow">Save the date</p>
+      <h2>The day we say <span>I do</span></h2>
+      <p class="date-line">01 · 01 · 2028</p>
+      <div class="countdown-grid">
+        <div class="time-box"><strong id="days">000</strong><small>Days</small></div>
+        <div class="time-box"><strong id="hours">00</strong><small>Hours</small></div>
+        <div class="time-box"><strong id="minutes">00</strong><small>Minutes</small></div>
+        <div class="time-box"><strong id="seconds">00</strong><small>Seconds</small></div>
+      </div>
+      <p class="eyebrow">A lifetime of love begins</p>
+    </section>
+
+    <section class="page location" id="location">
+      <div class="location-card">
+        <div class="location-icon">⌖</div>
+        <p class="eyebrow">Join us for the celebration</p>
+        <h2>Wedding <span>Venue</span></h2>
+        <p class="body-copy">We look forward to celebrating this beautiful occasion with you. Tap below to view the
+          venue directions.</p>
+        <a class="gold-button" href="https://maps.app.goo.gl/i5ZxwdQuzonYpEQ48" target="_blank" rel="noopener">OPEN
+          GOOGLE MAPS ↗</a>
+        <p class="date-line">01 January 2028</p>
+      </div>
+    </section>
+
+    <section class="page gallery" id="gallery">
+      <p class="eyebrow">Moments to remember</p>
+      <h2>Our <span>Gallery</span></h2>
+      <p class="body-copy">A little collection of love and happiness</p>
+      <div class="gallery-frame">
+        <img id="galleryImage"
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=85"
+          alt="Wedding gallery image">
+        <div class="gallery-caption" id="galleryCaption">A day to remember</div>
+      </div>
+      <div class="gallery-controls">
+        <button id="prevPhoto" type="button" aria-label="Previous photo">‹</button>
+        <div id="galleryDots" class="gallery-dots"></div>
+        <button id="nextPhoto" type="button" aria-label="Next photo">›</button>
+      </div>
+    </section>
+
+    <section class="page details" id="details">
+      <p class="eyebrow">The celebration</p>
+      <h2>A day of <span>happiness</span></h2>
+      <div class="detail-grid">
+        <div class="detail-card">
+          <div>♧</div>
+          <h3>Wedding Day</h3>
+          <p>Saturday<br>1 January 2028</p>
+        </div>
+        <div class="detail-card">
+          <div>♡</div>
+          <h3>With Love</h3>
+          <p>Adil & Fatima<br>Along with their families</p>
+        </div>
+      </div>
+      <p class="eyebrow">We cannot wait to celebrate with you</p>
+    </section>
+
+    <section class="page rsvp" id="rsvp">
+      <div class="rsvp-card">
+        <p class="eyebrow">Kindly respond</p>
+        <h2>Please <span>RSVP</span></h2>
+        <p class="body-copy">Your reply would mean so much to us.</p>
+        <form id="rsvpForm">
+          <label>Your full name<input id="guestName" type="text" placeholder="Enter your name" required></label>
+          <label>Phone number<input id="guestPhone" type="tel" placeholder="Enter your phone number" required></label>
+          <label>Will you attend?
+            <select id="attendance" required>
+              <option value="">Please select</option>
+              <option value="Joyfully accepting">Joyfully accepting</option>
+              <option value="Regretfully declining">Regretfully declining</option>
+            </select>
+          </label>
+          <label>Number of guests<input id="guestCount" type="number" min="1" max="20" value="1" required></label>
+          <button class="gold-button submit-button" type="submit">SEND RSVP ✧</button>
+          <p id="rsvpMessage" aria-live="polite"></p>
+        </form>
+        <p class="form-note">RSVP opens a WhatsApp message. Add the host's WhatsApp number in script.js to send
+          directly.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="footer-names">Adil & Fatima</p>
+    <p>Made with love · 01 January 2028</p>
+    <div class="ornament">✧ ❀ ✧</div>
+  </footer>
+</body>
+
+</html>
