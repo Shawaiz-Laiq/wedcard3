@@ -281,7 +281,7 @@ window.addEventListener("keydown", function (event) {
 });
 
 
-const WHATSAPP_NUMBER = "";
+const WHATSAPP_NUMBER = "03000000000";
 
 if (rsvpForm) {
 
