@@ -4,82 +4,15 @@
    CORRECTED JAVASCRIPT
 ========================================= */
 
-// 1. OPENING SCREEN
-// const openButton = document.getElementById("openButton");
-// const opening = document.getElementById("opening");
-// const curtains = document.querySelectorAll(".curtain");
-
-// let invitationOpened = false;
-
-// if (openButton) {
-//     openButton.addEventListener("click", function () {
-
-//         if (invitationOpened) return;
-//         invitationOpened = true;
-
-//         // Opening animation
-//         opening.classList.add("opened");
-
-//         // Move curtains
-//         curtains.forEach(function (curtain) {
-//             curtain.classList.add("open");
-//         });
-
-//         // Hide button
-//         openButton.classList.add("hide");
-
-//         // Enable body effects
-//         document.body.classList.add("invitation-open");
-
-//         // Start butterflies
-//         startButterflies();
-
-//         // Start automatic scrolling
-//         setTimeout(function () {
-//             document.getElementById("invitation")?.scrollIntoView({
-//                 behavior: "smooth"
-//             });
-//         }, 1200);
-
-//         startAutoScroll();
-//     });
-// }
-
-
-// const openButton = document.getElementById("openButton");
-// const envelopeStage = document.getElementById("envelopeStage");
-// const opening = document.getElementById("opening");
-
-// if (openButton && envelopeStage && opening) {
-
-//     openButton.addEventListener("click", () => {
-
-//         // Closed invitation changes into open invitation
-//         envelopeStage.classList.add("is-open");
-
-//         // Wait for envelope open + card slide-out animation
-//         setTimeout(() => {
-
-//             // Reveal the main wedding website
-//             opening.classList.add("opened");
-
-//             // Start main page
-//             document.body.style.overflow = "auto";
-
-//         }, 4000);
-
-//     });
-
-// }
-
-
-/* 1. OPENING SCREEN */
 
 const openButton = document.getElementById("openButton");
 const envelopeStage = document.getElementById("envelopeStage");
 const opening = document.getElementById("opening");
+const rsvpForm = document.getElementById("rsvpForm");
 
+let autoScrollTimer;
 let invitationOpened = false;
+let autoScrollEnabled = false;
 
 if (openButton && envelopeStage && opening) {
 
@@ -287,98 +220,67 @@ function startButterflies() {
 
 
 
-/* =========================================
-   5. AUTOMATIC SCROLL AFTER 7 SECONDS
-========================================= */
-
-let autoScrollTimer;
-let autoScrollEnabled = true;
+/* 5. AUTOMATIC SCROLL AFTER 7 SECONDS */
 
 function getSections() {
-    return Array.from(
-        document.querySelectorAll("main#mainContent section.page")
-    );
+    // Pehle main wala try karo, na mile to saare .page wale sections le lo
+    let sections = document.querySelectorAll("main#mainContent section.page");
+    if (sections.length === 0) {
+        sections = document.querySelectorAll("section.page");
+    }
+    return Array.from(sections);
 }
 
 function startAutoScroll() {
-
     clearTimeout(autoScrollTimer);
-
     if (!autoScrollEnabled) return;
 
-    // Wait 7 seconds before next scroll
     autoScrollTimer = setTimeout(function () {
-
         if (!autoScrollEnabled) return;
 
         const sections = getSections();
+        console.log("Auto scroll check, sections found:", sections.length);
 
-        // Find next section below current screen
         const nextSection = sections.find(function (section) {
-            return section.getBoundingClientRect().top > 100;
+            return section.getBoundingClientRect().top > 120;
         });
 
         if (nextSection) {
-
             nextSection.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
-
-            // Wait another 7 seconds for next section
+            // Agle section ke liye phir 7 sec wait karo
             startAutoScroll();
-
+        } else {
+            console.log("Last section reached, auto scroll stopped");
         }
-
     }, 7000);
 }
 
+/* 6. STOP AUTO SCROLL ON USER SCROLL */
 
-/* =========================================
-   6. STOP AUTO SCROLL ON USER SCROLL
-========================================= */
+let isAutoScrolling = false;
 
 function stopAutoScroll() {
-
     if (!autoScrollEnabled) return;
+    if (isAutoScrolling) return; // auto scroll ki wajah se band mat karo
 
     autoScrollEnabled = false;
-
     clearTimeout(autoScrollTimer);
-
     console.log("Automatic scrolling stopped by user.");
 }
 
-// Mouse wheel
-window.addEventListener("wheel", stopAutoScroll, {
-    passive: true
-});
-
-// Mobile: actual finger movement, not simple tap
-window.addEventListener("touchmove", stopAutoScroll, {
-    passive: true
-});
-
-// Keyboard scrolling
+window.addEventListener("wheel", stopAutoScroll, { passive: true });
+window.addEventListener("touchmove", stopAutoScroll, { passive: true });
 window.addEventListener("keydown", function (event) {
-
-    const keys = [
-        "ArrowDown",
-        "ArrowUp",
-        "PageDown",
-        "PageUp",
-        " "
-    ];
-
+    const keys = ["ArrowDown", "ArrowUp", "PageDown", "PageUp", " "];
     if (keys.includes(event.key)) {
         stopAutoScroll();
     }
-
 });
 
 
-// Add host WhatsApp number here.
-// Example: 923001234567
 const WHATSAPP_NUMBER = "";
 
 if (rsvpForm) {
